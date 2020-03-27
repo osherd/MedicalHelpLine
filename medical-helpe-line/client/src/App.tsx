@@ -1,12 +1,13 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
+import LandingPage from "./components/LandingPage";
 
+interface appProps {}
 function App() {
   return (
-    <div className="App">
-      <h1>wellcome to medical helpe line</h1>
-    </div>
+    <>
+    <LandingPage/>
+    </>
   );
 }
-
 export default App;
