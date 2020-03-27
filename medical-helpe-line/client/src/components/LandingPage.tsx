@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import ButtonGroup from '@material-ui/core/ButtonGroup';
+import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Button from "@material-ui/core/Button";
 import Login from "./LogIn";
 
 const LandingPage: React.FC<any> = () => {
-    const [isShowForm,setIsShowForm] = useState(false)
+  const [isShowForm, setIsShowForm] = useState(false);
   return (
     <div className="App">
       <img
@@ -18,9 +18,10 @@ const LandingPage: React.FC<any> = () => {
         variant="contained"
         color="secondary"
       >
-        <Button onClick = {()=>setIsShowForm(true)}>
-            {(isShowForm)&& <Login/>}
-            Admin Login</Button>
+        <Button onClick={() => setIsShowForm(true)}>
+          {isShowForm && <Login />}
+          Admin Login
+        </Button>
         <Button>User Login</Button>
         <Button>Patiant Login</Button>
       </ButtonGroup>
