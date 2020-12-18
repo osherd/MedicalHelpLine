@@ -1,79 +1,49 @@
 import React, { useState } from "react";
-import Button from "@material-ui/core/Button";
-import Paper from "@material-ui/core/Paper";
-import Box from "@material-ui/core/Box";
-
-import {
-  CssBaseline,
-  TextField,
-  FormControlLabel,
-  Checkbox,
-  Typography,
-  Container,
-  Grid,
-  InputLabel,
-  FormControl,
-  Input,
-} from "@material-ui/core";
 
 const Login = () => {
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleSubmit = (event: any) => {
-    event.preventDefault();
-    //   const { userName, password } = event.target.value;
-    //   setUserName(userName);
-    //   setPassword(password);
-    // };
+  const [isAuthenticated, setisAuthenticated] = useState(false);
+  const [user, setUser] = useState("");
+  const [pass, setPass] = useState("");
+  const userData = { user, pass };
+  const fetchMeAUser = () => {
+    fetch("http://localhost:3000/user", {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    })
+      .then((res) => res.json())
+      .then((data) => setisAuthenticated(data));
   };
-
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <Typography component="h1" variant="h5">
-        Adnin Login
-      </Typography>
-
-      <form noValidate onSubmit={handleSubmit}>
-        <Grid item sm={3}>
-          <FormControl fullWidth>
-            <InputLabel shrink>user name</InputLabel>
-            <Input
-              autoComplete="off"
-              autoFocus
-              fullWidth
-              id="user_Name"
-              onChange={(e) => {
-                setUserName(e.target.value);
-              }}
-              value={userName}
-            />
-          </FormControl>
-        </Grid>
-        <Grid item sm={3}>
-          <FormControl fullWidth>
-            <InputLabel shrink>password</InputLabel>
-            <Input
-              autoComplete="off"
-              fullWidth
-              id="password"
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-              value={password}
-            />
-          </FormControl>
-        </Grid>
-        <FormControlLabel
-          control={<Checkbox value="remember" color="primary" />}
-          label="Remember me"
+    <div className="App">
+      <div>
+        username
+        <input
+          type="text"
+          onChange={(e) => {
+            setUser(e.target.value);
+          }}
         />
-        <Button type="submit" fullWidth variant="contained" color="primary">
-          Login
-        </Button>
-      </form>
-    </Container>
+      </div>
+      <div>
+        password
+        <input
+          type="password"
+          onChange={(e) => {
+            setPass(e.target.value);
+          }}
+        />
+      </div>
+      <button onClick={fetchMeAUser} className="button">
+        Login
+      </button>
+
+      <h1>
+        {isAuthenticated ? "he is authenticated" : "he is not athenticated"}
+      </h1>
+    </div>
   );
 };
 export default Login;

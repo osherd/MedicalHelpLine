@@ -1,33 +1,27 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 
+users = [{ id: "john snow" }];
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-    res.send('this is the users module');
+router.get("/", function (req, res) {
+  const { user, pass } = req.body;
+  res.send(true);
 });
-
-router.get('/:id', (req, res) => {
-    const { id } = req.params;
-    console.log('getting user with id: ', id);
-    res.send({ id, name: 'jhon smith' });
+router.post("/", function (req, res) {
+  const { user, pass } = req.body;
+  if (user == "roey") {
+    if (pass == 123) {
+      res.send(true);
+    }
+  } else {
+    res.send(false);
+  }
 });
-
-router.post('/', (req, res) => {
-    console.log('Creating user', req.body);
-    res.send('ok');
+router.put("/:id", function (req, res) {
+  users[req.params.id] = req.data;
 });
-
-router.put('/:id', (req, res) => {
-  const { id } = req.params;
-  console.log('updating user', id, req.body);
-
-  res.send('ok');
-})
-
-router.delete('/:id', (req, res) => {
-  const { id } = req.params;
-  console.log('Deleting user', id);
-  res.send('too bad :)')
-})
+router.delete("/:id", function (req, res) {
+  users = users.filter((x) => x != req.body);
+});
 
 module.exports = router;
