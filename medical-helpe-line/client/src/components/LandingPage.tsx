@@ -1,10 +1,13 @@
-import React, { useState } from "react";
-import ButtonGroup from "@material-ui/core/ButtonGroup";
-import Button from "@material-ui/core/Button";
+import React from "react";
 import Login from "./LogIn";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  NavLink,
+} from "react-router-dom";
 
 const LandingPage: React.FC<any> = () => {
-  const [isShowForm, setIsShowForm] = useState(false);
   return (
     <div className="App">
       <img
@@ -12,19 +15,19 @@ const LandingPage: React.FC<any> = () => {
         alt=""
         style={{ height: 150, width: 500 }}
       />
-      <ButtonGroup
-        style={{ height: 70, width: 1100, border: 5 }}
-        fullWidth
-        variant="contained"
-        color="secondary"
-      >
-        <Button onClick={() => setIsShowForm(true)}>
-          {isShowForm && <Login />}
-          Admin Login
-        </Button>
-        <Button>User Login</Button>
-        <Button>Patiant Login</Button>
-      </ButtonGroup>
+      <Router>
+        <div>
+          <ul>
+            <li>
+              <NavLink to="/Login">Admin</NavLink>
+            </li>
+          </ul>
+          <hr />
+          <Switch>
+            <Route path="/Login" exact component={Login} />
+          </Switch>
+        </div>
+      </Router>
     </div>
   );
 };
