@@ -7,9 +7,10 @@ router.get("/", function (req, res) {
   const { user, pass } = req.body;
   res.send(true);
 });
+
 router.post("/", function (req, res) {
   const { user, pass } = req.body;
-  if (user == "roey") {
+  if (user == "osher") {
     if (pass == 123) {
       res.send(true);
     }
