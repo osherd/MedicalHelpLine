@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname, "public", "build")));
 app.get("/", (req, res) => {
   res.status(200).send("hello admin");
 });
-app.post("/login", (req, res) => {
+app.post("/api/login", (req, res) => {
   const { userName, password } = req.body;
 
   console.log("req.body", req.body);

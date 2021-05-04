@@ -5,9 +5,9 @@ const Login = () => {
   const [user, setUser] = useState("");
   const [pass, setPass] = useState("");
   const userData = { user, pass };
-  const fetchMeAUser = () => {
-    fetch("http://localhost:3000/user", {
-      method: "POST", // or 'PUT'
+  const fetchUser = () => {
+    fetch("/api/login", {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
@@ -36,7 +36,7 @@ const Login = () => {
           }}
         />
       </div>
-      <button onClick={fetchMeAUser} className="button">
+      <button onClick={fetchUser} className="button">
         Login
       </button>
 

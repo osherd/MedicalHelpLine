@@ -1,27 +1,26 @@
 var express = require("express");
 var router = express.Router();
 
-users = [{ id: "john snow" }];
-/* GET users listing. */
-router.get("/", function (req, res) {
+router.get("/", (req, res) => {
   const { user, pass } = req.body;
   res.send(true);
 });
 
-router.post("/", function (req, res) {
-  const { user, pass } = req.body;
-  if (user == "osher") {
-    if (pass == 123) {
-      res.send(true);
-    }
-  } else {
-    res.send(false);
+router.post("/login", (req, res) => {
+  const { userName, password } = req.body;
+
+  console.log("req.body", req.body);
+
+  if (userName === "abc" && password === "123") {
+    return res.send(JSON.parse({ message: "ok" }));
   }
+
+  res.sendStatus(403);
 });
-router.put("/:id", function (req, res) {
+router.put("/:id", (req, res) => {
   users[req.params.id] = req.data;
 });
-router.delete("/:id", function (req, res) {
+router.delete("/:id", (req, res) => {
   users = users.filter((x) => x != req.body);
 });
 
