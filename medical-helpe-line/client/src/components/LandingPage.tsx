@@ -6,6 +6,7 @@ import {
   Route,
   NavLink,
 } from "react-router-dom";
+import { Button, Grid, Typography } from "@material-ui/core";
 
 const LandingPage: React.FC<any> = () => {
   return (
@@ -16,17 +17,54 @@ const LandingPage: React.FC<any> = () => {
         style={{ height: 150, width: 500 }}
       />
       <Router>
-        <div>
-          <ul>
-            <li>
-              <NavLink to="/Login">Admin</NavLink>
-            </li>
-          </ul>
-          <hr />
-          <Switch>
-            <Route path="/Login" exact component={Login} />
-          </Switch>
-        </div>
+        <Grid
+          container
+          spacing={2}
+          direction="row"
+          justify="center"
+          alignItems="center"
+        >
+          <Grid item xs={12}>
+            <NavLink to="/Login">
+              <Button
+                id="admin_button"
+                variant="outlined"
+                size="large"
+                color="primary"
+              >
+                <Typography>Admin</Typography>
+              </Button>
+            </NavLink>
+          </Grid>
+          <Grid item xs={12}>
+            <NavLink to="/Doctor">
+              <Button
+                id="doctor_button"
+                variant="outlined"
+                size="large"
+                color="primary"
+              >
+                <Typography>Doctor</Typography>
+              </Button>
+            </NavLink>
+          </Grid>
+          <Grid item xs={12}>
+            <NavLink to="/Patient">
+              <Button
+                id="patient_button"
+                variant="outlined"
+                size="large"
+                color="primary"
+              >
+                <Typography>Patient</Typography>
+              </Button>
+            </NavLink>
+          </Grid>
+        </Grid>
+        <hr />
+        <Switch>
+          <Route path="/Login" exact component={Login} />
+        </Switch>
       </Router>
     </div>
   );
