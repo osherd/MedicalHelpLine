@@ -61,7 +61,6 @@ const LandingPage: React.FC<any> = () => {
             </NavLink>
           </Grid>
         </Grid>
-        <hr />
         <Switch>
           <Route path="/Login" exact component={Login} />
         </Switch>

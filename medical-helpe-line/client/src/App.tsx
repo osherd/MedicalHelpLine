@@ -6,7 +6,7 @@ interface appProps {}
 function App() {
   return (
     <>
-    <LandingPage/>
+      <LandingPage />
     </>
   );
 }
